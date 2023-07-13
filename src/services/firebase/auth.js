@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import conexion from "./index";
 
 function login(email, password) {
@@ -17,6 +17,24 @@ function login(email, password) {
       
 }
 
+function register(email, password) {
+
+  const auth = getAuth(app);
+
+  createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(userCredential)
+      // ...
+  })
+  .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage)
+  });
+
+}
+
 export {
-    login
+    login, register
 }
