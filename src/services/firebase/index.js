@@ -17,3 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export default app;
+
+
+//Haciendo cambios para el repositorio :)
